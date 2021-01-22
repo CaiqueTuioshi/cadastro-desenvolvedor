@@ -1,0 +1,31 @@
+version: "2"
+services:
+  server:
+    container_name: "server"
+    restart: always
+    build: './server'
+    environment:
+      - PORT=3333
+    ports:
+      - "3333:3333"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    command: yarn start
+    
+  web:
+    container_name: "web"
+    build: './web'
+    environment:
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    command: yarn start
+
+  mongo:
+    container_name: "mongo"
+    image: mongo
+    ports:
+      - "27017:27017"
+    command: mongod --logpath=/dev/null # --quiet
