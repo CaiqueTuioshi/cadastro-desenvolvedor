@@ -12,7 +12,7 @@ import {
   Button,
 } from 'reactstrap';
 import * as Yup from 'yup';
-import { DevelopersService } from '../../services';
+import { DeveloperService } from '../../services';
 import { Developer } from '../../types/Developer';
 
 type Props = {};
@@ -41,7 +41,7 @@ const DeveloperFormPage: React.FC<Props> = () => {
 
   useEffect(() => {
     if (!isNew) {
-      DevelopersService.findById(id)
+      DeveloperService.findById(id)
         .then((response) => {
           setDeveloper(response.data);
         })
@@ -52,7 +52,7 @@ const DeveloperFormPage: React.FC<Props> = () => {
   }, [isNew, id]);
 
   const onSubmit = (value: Developer) => {
-    DevelopersService.save(value)
+    DeveloperService.save(value)
       .then(() => history.push('/developers'))
       .catch((error) => {
         toast.error(error.response.data.errorMessage);

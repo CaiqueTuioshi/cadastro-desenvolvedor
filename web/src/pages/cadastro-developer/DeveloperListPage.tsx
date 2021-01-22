@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import ButtonNew from '../../components/ButtonNew';
 import PaginationTable from '../../components/PaginationTable';
 import SearchFilter from '../../components/SearchFilter';
-import { DevelopersService } from '../../services';
+import { DeveloperService } from '../../services';
 import { Developer, SexoDescricao } from '../../types/Developer';
 
 type Props = {};
@@ -22,7 +22,7 @@ const DeveloperListPage: React.FC<Props> = () => {
 
   const findAllPagedSearch = useCallback(
     (page: number = 1, searchFilter: string = '') => {
-      DevelopersService.findAllPagedSearch(page, searchFilter)
+      DeveloperService.findAllPagedSearch(page, searchFilter)
         .then((response) => {
           setDevelopers(response.data.content);
           setCurrentPage(response.data.currentPage);
@@ -48,7 +48,7 @@ const DeveloperListPage: React.FC<Props> = () => {
       denyButtonText: `Cancelar`,
     }).then((result) => {
       if (result.isConfirmed) {
-        DevelopersService.remove(id)
+        DeveloperService.remove(id)
           .then(async () => {
             await findAllPagedSearch();
             Swal.fire('Desenvolvedor removido!', '', 'success');

@@ -1,3 +1,3 @@
-import * as DevelopersService from './DevelopersService'
+import * as DeveloperService from './DeveloperService'
 
-export {DevelopersService}
+export {DeveloperService}
