@@ -1,6 +1,6 @@
 const express = require("express");
 const routes = express.Router();
-const { findAllPagedSearch, findById, create, edit, remove } = require('./controllers/DesenvolvedorController')
+const { findAllPagedSearch, findById, create, edit, remove } = require('./controllers/DeveloperController')
 
 routes.get('/developers', findAllPagedSearch)
 routes.get('/developers/:id', findById)

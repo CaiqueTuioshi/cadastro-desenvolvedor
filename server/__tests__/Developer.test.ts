@@ -27,7 +27,7 @@ const developers = [
   }
 ]
 
-describe('DesenvolvedorController - GET: /developers', () => {
+describe('DeveloperController - GET: /developers', () => {
   beforeAll(async () => {
     await Developer.remove({});
     await Developer.insertMany(developers);
@@ -59,7 +59,7 @@ describe('DesenvolvedorController - GET: /developers', () => {
   })
 })
 
-describe('DesenvolvedorController - GET: /developers/:id', () => {
+describe('DeveloperController - GET: /developers/:id', () => {
   beforeAll(async () => {
     await Developer.remove({});
     await Developer.insertMany(developers);
@@ -88,7 +88,7 @@ describe('DesenvolvedorController - GET: /developers/:id', () => {
   })
 })
 
-describe('DesenvolvedorController - POST: /developers', () => {
+describe('DeveloperController - POST: /developers', () => {
   const developer = {
     nome: 'Mario Lima',
     sexo: 'O',
@@ -123,7 +123,7 @@ describe('DesenvolvedorController - POST: /developers', () => {
   })
 })
 
-describe('DesenvolvedorController - PUT: /developers/:id', () => {
+describe('DeveloperController - PUT: /developers/:id', () => {
   const developerAtualizado = {
     nome: 'Rogério Lima',
     sexo: 'O',
@@ -161,7 +161,7 @@ describe('DesenvolvedorController - PUT: /developers/:id', () => {
   })
 })
 
-describe('DesenvolvedorController - DELETE: /developers/:id', () => {  
+describe('DeveloperController - DELETE: /developers/:id', () => {  
   beforeAll(async () => {
     await Developer.remove({});
     await Developer.insertMany(developers);
