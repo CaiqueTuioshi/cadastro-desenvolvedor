@@ -1,5 +1,5 @@
 version: "2"
-services:
+services:    
   server:
     container_name: "server"
     restart: always
@@ -29,3 +29,18 @@ services:
     ports:
       - "27017:27017"
     command: mongod --logpath=/dev/null # --quiet
+    
+  server-test:
+    container_name: "server-test"
+    restart: always
+    build: './server'
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    command: yarn test
+    
+  web-test:
+    container_name: "web-test"
+    build: './web'
+    command: yarn test
