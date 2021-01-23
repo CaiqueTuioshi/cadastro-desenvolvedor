@@ -28,7 +28,7 @@ const initialValue: Developer = {
 const validationSchema = Yup.object().shape({
   nome: Yup.string().required('Nome é obrigatório'),
   sexo: Yup.string().required('Sexo é obrigatório'),
-  idade: Yup.string().required('Idade é obrigatória'),
+  idade: Yup.number().required('Idade é obrigatória'),
   hobby: Yup.string().required('Hobby é obrigatório'),
   dataNascimento: Yup.string().required('Data de Nascimento é obrigatória'),
 });
@@ -120,7 +120,7 @@ const DeveloperFormPage: React.FC<Props> = () => {
                 <FormGroup>
                   <Label for='idade'>Idade</Label>
                   <Input
-                    type='text'
+                    type='number'
                     name='idade'
                     id='idade'
                     onChange={(value) => {

@@ -3,7 +3,7 @@ import {Schema, model, Document} from 'mongoose'
 interface DeveloperInterface extends Document {
   nome: string;
   sexo: string;
-  idade: string;
+  idade: number;
   hobby: string;
   dataNascimento: string;
 }
@@ -11,7 +11,7 @@ interface DeveloperInterface extends Document {
 const DeveloperSchema = new Schema({
   nome: String,
   sexo: String,
-  idade: String,
+  idade: Number,
   hobby: String,
   dataNascimento: String
 }, {
