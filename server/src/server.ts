@@ -1,3 +1,3 @@
-import app from './app'
+const appServer = require('./app')
 
-app.listen(3333)
+appServer.listen(3333)

@@ -1,34 +1,19 @@
-import express from 'express'
-import cors from 'cors'
-import mongoose from 'mongoose'
+require("dotenv").config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
+});
+const mongoose = require('mongoose')
+const routes = require('./routes')
 
-import routes from './routes'
+const express = require('express')
+const cors = require('cors')
+const app = express()
 
-class App {
-  public express: express.Application
+app.use(express.json())
+app.use(cors())
+app.use(routes)
 
-  public constructor () {
-    this.express = express()
+mongoose.connect(process.env.DB_CONNECTION, {
+  useNewUrlParser: true
+})
 
-    this.middlewares()
-    this.database()
-    this.routes()
-  }
-
-  private middlewares (): void {
-    this.express.use(express.json())
-    this.express.use(cors())
-  }
-
-  private database (): void {
-    mongoose.connect('mongodb://172.17.0.1:27017/gazin', {
-      useNewUrlParser: true
-    })
-  }
-
-  private routes (): void {
-    this.express.use(routes)
-  }
-}
-
-export default new App().express;
+module.exports = app;

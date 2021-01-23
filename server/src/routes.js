@@ -1,13 +1,11 @@
-import {Router} from 'express'
+const express = require("express");
+const routes = express.Router();
+const { findAllPagedSearch, findById, create, edit, remove } = require('./controllers/DesenvolvedorController')
 
-import DesenvolvedorController from './controllers/DesenvolvedorController'
+routes.get('/developers', findAllPagedSearch)
+routes.get('/developers/:id', findById)
+routes.post('/developers', create)
+routes.put('/developers/:id', edit)
+routes.delete('/developers/:id', remove)
 
-const routes = Router()
-
-routes.get('/developers', DesenvolvedorController.findAllPagedSearch)
-routes.get('/developers/:id', DesenvolvedorController.findById)
-routes.post('/developers', DesenvolvedorController.create)
-routes.put('/developers/:id', DesenvolvedorController.edit)
-routes.delete('/developers/:id', DesenvolvedorController.delete)
-
-export default routes
+module.exports = routes;
