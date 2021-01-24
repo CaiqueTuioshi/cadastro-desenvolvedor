@@ -5,7 +5,8 @@ import styled from 'styled-components';
 type Props = {
   currentPage: number;
   totalPages: number;
-  search(page?: number): void;
+  searchFilter: string;
+  search(page?: number, searchFilter?: string): void;
 };
 
 const PaginationContainer = styled.div`
@@ -19,6 +20,7 @@ const MAX_PAGES_RENDER = 3;
 const PaginationTable: React.FC<Props> = ({
   currentPage,
   totalPages,
+  searchFilter,
   search,
 }) => {
   const [pages, setPages] = useState<number[]>([]);
@@ -55,13 +57,13 @@ const PaginationTable: React.FC<Props> = ({
 
   const loadPreviousPage = (page: number) => {
     if (page) {
-      search(page);
+      search(page, searchFilter);
     }
   };
 
   const loadNextPage = (page: number) => {
     if (page <= totalPages) {
-      search(page);
+      search(page, searchFilter);
     }
   };
 
@@ -71,7 +73,7 @@ const PaginationTable: React.FC<Props> = ({
         {currentPage !== FIRST_PAGE && totalPages > MAX_PAGES_RENDER && (
           <>
             <PaginationItem>
-              <PaginationLink first onClick={() => search(FIRST_PAGE)} />
+              <PaginationLink first onClick={() => search(FIRST_PAGE, searchFilter)} />
             </PaginationItem>
             <PaginationItem>
               <PaginationLink
@@ -83,7 +85,7 @@ const PaginationTable: React.FC<Props> = ({
         )}
         {pages.map((page) => (
           <PaginationItem key={page}>
-            <PaginationLink onClick={() => search(page)}>{page}</PaginationLink>
+            <PaginationLink onClick={() => search(page, searchFilter)}>{page}</PaginationLink>
           </PaginationItem>
         ))}
         {currentPage !== totalPages && totalPages > MAX_PAGES_RENDER && (
@@ -95,7 +97,7 @@ const PaginationTable: React.FC<Props> = ({
               />
             </PaginationItem>
             <PaginationItem>
-              <PaginationLink last onClick={() => search(totalPages)} />
+              <PaginationLink last onClick={() => search(totalPages, searchFilter)} />
             </PaginationItem>
           </>
         )}

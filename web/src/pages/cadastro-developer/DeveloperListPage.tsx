@@ -19,9 +19,12 @@ const DeveloperListPage: React.FC<Props> = () => {
   const [developers, setDevelopers] = useState<Developer[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
+  const [searchFilter, setSearchFilter] = useState<string>('');
 
   const findAllPagedSearch = useCallback(
     (page: number = 1, searchFilter: string = '') => {
+      setSearchFilter(searchFilter);
+
       DeveloperService.findAllPagedSearch(page, searchFilter)
         .then((response) => {
           setDevelopers(response.data.content);
@@ -50,7 +53,7 @@ const DeveloperListPage: React.FC<Props> = () => {
       if (result.isConfirmed) {
         DeveloperService.remove(id)
           .then(async () => {
-            await findAllPagedSearch();
+            await findAllPagedSearch(undefined, searchFilter);
             Swal.fire('Desenvolvedor removido!', '', 'success');
           })
           .catch((error) => {
@@ -128,6 +131,7 @@ const DeveloperListPage: React.FC<Props> = () => {
       <PaginationTable
         currentPage={currentPage}
         totalPages={totalPages}
+        searchFilter={searchFilter}
         search={findAllPagedSearch}
       />
 

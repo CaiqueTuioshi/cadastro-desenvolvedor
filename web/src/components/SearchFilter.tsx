@@ -22,6 +22,18 @@ const SearchFilter: React.FC<Props> = ({ search }) => {
     }
   };
 
+  const getTypeFilterField = () => {
+    if (field === 'idade') {
+      return 'number';
+    }
+
+    if (field === 'dataNascimento') {
+      return 'date';
+    }
+
+    return 'text';
+  }
+
   return (
     <React.Fragment>
       <Row>
@@ -29,8 +41,8 @@ const SearchFilter: React.FC<Props> = ({ search }) => {
           <FormGroup>
             <Input
               type='select'
-              name='sexo'
-              id='sexo'
+              name='typeFilter'
+              id='typeFilter'
               onChange={(value) => onFieldChange(value.target.value)}
               value={field}
             >
@@ -44,7 +56,7 @@ const SearchFilter: React.FC<Props> = ({ search }) => {
           </FormGroup>
         </Col>
         <Col md={6}>
-          {field === 'sexo' && (
+          {field === 'sexo' ? (
             <FormGroup>
               <Input
                 type='select'
@@ -59,24 +71,10 @@ const SearchFilter: React.FC<Props> = ({ search }) => {
                 <option value='O'>Outro</option>
               </Input>
             </FormGroup>
-          )}
-          {field === 'dataNascimento' && (
+          ) : (
             <FormGroup>
               <Input
-                type='date'
-                name='dataNascimento'
-                id='dataNascimento'
-                onChange={(value) => setFiltro(value.target.value)}
-                value={filtro}
-              />
-            </FormGroup>
-          )}
-          {field !== 'sexo' && field !== 'dataNascimento' && (
-            <FormGroup>
-              <Input
-                type='text'
-                name='nome'
-                id='nome'
+                type={getTypeFilterField()}
                 onChange={(value) => setFiltro(value.target.value)}
                 value={filtro}
                 disabled={field === 'todos'}

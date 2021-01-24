@@ -1,41 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
+  Container
 } from 'reactstrap';
+import styled from 'styled-components';
 
-type Props = {};
+const HomePageStyle = styled.div`
+  marginTop: 15px;
+  padding: 10px;
+`;
+
+type Props = {}
 
 const HomePage: React.FC<Props> = () => {
-  const [collapsed, setCollapsed] = useState(true);
-
-  const toggleNavbar = () => setCollapsed(!collapsed);
   return (
-    <Container className='home themed-container'>
-      <Navbar color='light' light>
-        <NavbarBrand href='/' className='mr-auto'>
-          Gazin
-        </NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className='mr-2' />
-        <Collapse isOpen={!collapsed} navbar>
-          <Nav navbar>
-            <NavItem>
-              <NavLink href='/developers/novo'>Adicionar Desenvolvedor</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href='/developers'>Listar Desenvolvedores</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
+    <Container className='themed-container'>
+      <HomePageStyle>
+        <h3>Bem vindo!</h3>
+        <p>Para iniciar o cadastro de desenvolvedor, utilize o menu acima, clicando em <i>Adicionar Desenvolvedor</i>.</p>
+      </HomePageStyle>
     </Container>
-  );
-};
+  ) 
+}
 
 export default HomePage;
