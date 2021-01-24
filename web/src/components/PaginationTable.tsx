@@ -84,7 +84,7 @@ const PaginationTable: React.FC<Props> = ({
           </>
         )}
         {pages.map((page) => (
-          <PaginationItem key={page}>
+          <PaginationItem key={page} className={currentPage === page ? 'page-mark-select' : ''}>
             <PaginationLink onClick={() => search(page, searchFilter)}>{page}</PaginationLink>
           </PaginationItem>
         ))}

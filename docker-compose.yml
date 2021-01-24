@@ -1,7 +1,7 @@
 version: "2"
 services:    
-  server:
-    container_name: "server"
+  server-app-caique:
+    container_name: "server-app-caique"
     restart: always
     build: './server'
     environment:
@@ -9,13 +9,13 @@ services:
     ports:
       - "3333:3333"
     links:
-      - mongo
+      - mongo-app-caique
     depends_on:
-      - mongo
+      - mongo-app-caique
     command: yarn start
     
-  web:
-    container_name: "web"
+  web-app-caique:
+    container_name: "web-app-caique"
     build: './web'
     environment:
       - PORT=3000
@@ -23,24 +23,24 @@ services:
       - "3000:3000"
     command: yarn start
 
-  mongo:
-    container_name: "mongo"
+  mongo-app-caique:
+    container_name: "mongo-app-caique"
     image: mongo
     ports:
       - "27017:27017"
     command: mongod --logpath=/dev/null # --quiet
     
-  server-test:
-    container_name: "server-test"
+  server-app-caique-test:
+    container_name: "server-app-caique-test"
     restart: always
     build: './server'
     links:
-      - mongo
+      - mongo-app-caique
     depends_on:
-      - mongo
+      - mongo-app-caique
     command: yarn test
     
-  web-test:
-    container_name: "web-test"
+  web-app-caique-test:
+    container_name: "web-app-caique-test"
     build: './web'
     command: yarn test

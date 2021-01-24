@@ -53,7 +53,7 @@ const DeveloperListPage: React.FC<Props> = () => {
       if (result.isConfirmed) {
         DeveloperService.remove(id)
           .then(async () => {
-            await findAllPagedSearch(undefined, searchFilter);
+            await findAllPagedSearch();
             Swal.fire('Desenvolvedor removido!', '', 'success');
           })
           .catch((error) => {

@@ -1,13 +1,13 @@
 FROM node:latest
 
-RUN mkdir -p /usr/app/web
-WORKDIR /usr/app/web
+RUN mkdir -p /usr/app/webappcaique
+WORKDIR /usr/app/webappcaique
 
-COPY package.json /usr/app/web
-COPY yarn.lock /usr/app/web
+COPY package.json /usr/app/webappcaique
+COPY yarn.lock /usr/app/webappcaique
 
 RUN yarn install
 
-COPY . /usr/app/web
+COPY . /usr/app/webappcaique
 
 CMD ["yarn", "start"]
