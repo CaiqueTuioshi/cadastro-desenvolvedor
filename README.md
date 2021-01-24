@@ -1,5 +1,6 @@
 # cadastro-desenvolvedor
 
+## Tecnologias e ferramentas utilizadas:
 #### Controle de Versão
  - Git
 
@@ -43,6 +44,7 @@
  - Será executado no endereço http://localhost:3000
   
 #### Back-end
+ - No arquivo `.env`, alterar o caminho da variável `DB_CONNECTION` para se conectar com base local `mongodb://localhost:27017/gazinCaique`.
  - Abrir o terminal do sistema no caminho `cadastro-desenvolvedor/server`
  - Baixar o node_modules com o comando `yarn`
  - Executar o comando `yarn start` para subir a aplicação.
@@ -53,6 +55,7 @@
 - Executar o comando `yarn test`
 
 #### Testes Back-end
+- No arquivo `.env.test`, alterar o caminho da variável `DB_CONNECTION` para se conectar com base local `mongodb://localhost:27017/gazinCaiqueTest`.
 - Abrir o terminal do sistema no caminho `cadastro-desenvolvedor/server`
 - Executar o comando `yarn test`
  
