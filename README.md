@@ -29,14 +29,14 @@
  - MongoDB
  
 ## Passo a Passo - (Após clonar o repósitório)
-### Subindo a aplicação com Docker
+### Iniciando a aplicação com Docker
  - Abrir o terminal do sistema no caminho do repositório `cadastro-desenvolvedor` e executar o comando `docker-compose up`.
  - O Back-end será executado no endereço http://localhost:3333.
  - O Front-end será executado no endereço http://localhost:3000.
  - O Back-end se conectará com o banco de dados no ip local do Docker, configurado na variável de ambiente DB_CONNECTION `172.17.0.1:27017`
  - Todos os testes do Front-end (Unitários) e do Back-end (Integração), serão executados junto com a aplicação.
  
-### Subindo a aplicação sem Docker
+### Iniciando a aplicação sem Docker
 #### Front-end
  - Abrir o terminal do sistema no caminho `cadastro-desenvolvedor/web`
  - Baixar o node_modules com o comando `yarn`
