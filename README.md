@@ -1,47 +1,63 @@
-# cadastra-cep
+# cadastro-desenvolvedor
 
-CONTROLE DE VERSÃO
+## Tecnologias e ferramentas utilizadas:
+#### Controle de Versão
  - Git
 
-GERENCIADOR DE PACOTES
+#### Gerenciador de Pacotes
  - Yarn
 
-FRONT-END
+#### Front-end
  - React (Hooks)
  - Typescript
  - reactstrap (Visual)
+ - styled-components (Estilização de componente)
  - Formik (Gerenciador de formulário)
  - react toastify (Notificação de erros)
  - sweetalert2 (Alertas de listagem e confirmação)
  - Yup (Validador de formulário)
  - Axios (Rest)
  
-BACK-END
+#### Back-end
  - Node.Js
  - Typescript
  - Express
  - Mongoose
  - Nodemon
- - Jest (Teste unitário)
  
-BANCO NÃO RELACIONAL
+#### Banco de Dados
  - MongoDB
  
-(BANCO NÃO RELACIONAL)
- - Iniciar sessão MongoDB local, pois a aplicação roda no servidor mongodb://localhost:27017
+## Passo a Passo - (Após clonar o repósitório)
+### Subindo a aplicação com Docker
+ - Abrir o terminal do sistema no caminho do repositório `cadastro-desenvolvedor` e executar o comando `docker-compose up`.
+ - O Back-end será executado no endereço http://localhost:3333.
+ - O Front-end será executado no endereço http://localhost:3000.
+ - O Back-end se conectará com o banco de dados no ip local do Docker, configurado na variável de ambiente DB_CONNECTION `172.17.0.1:27017`
+ - Todos os testes do Front-end (Unitários) e do Back-end (Integração), serão executados junto com a aplicação.
  
-PASSO A PASSO - (Após clonar o repósitório)
-(FRONT-END)
- - Baixar o node_modules na pasta \cadastra-cep\web
- - Subir a aplicação web com o script yarn start
- - Executa na porta 3000
+### Subindo a aplicação sem Docker
+#### Front-end
+ - Abrir o terminal do sistema no caminho `cadastro-desenvolvedor/web`
+ - Baixar o node_modules com o comando `yarn`
+ - Executar o comando `yarn start` para subir a aplicação.
+ - Será executado no endereço http://localhost:3000
+  
+#### Back-end
+ - No arquivo `.env`, alterar o caminho da variável `DB_CONNECTION` para se conectar com base local `mongodb://localhost:27017/gazinCaique`.
+ - Abrir o terminal do sistema no caminho `cadastro-desenvolvedor/server`
+ - Baixar o node_modules com o comando `yarn`
+ - Executar o comando `yarn start` para subir a aplicação.
+ - Será executado no endereço http://localhost:3333
  
-(BACK-END)
- - Baixar o node_modules na pasta \cadastra-cep\service
- - Subir a aplicação back com o script yarn start
- - Executa na porta 3333
+#### Testes Front-end
+- Abrir o terminal do sistema no caminho `cadastro-desenvolvedor/web`
+- Executar o comando `yarn test`
+
+#### Testes Back-end
+- No arquivo `.env.test`, alterar o caminho da variável `DB_CONNECTION` para se conectar com base local `mongodb://localhost:27017/gazinCaiqueTest`.
+- Abrir o terminal do sistema no caminho `cadastro-desenvolvedor/server`
+- Executar o comando `yarn test`
  
-(TESTES UNITÁRIOS BACK-END)
- - na pasta \cadastra-cep\service, executar o script yarn test
- 
-OBS: Ao utilizar o sistema, o backend já se encarregará de criar o banco de dados com nome trade
+### Observação
+Os ambientes de aplicação e testes foram separados. A aplicação será executada consumindo uma base de dados com nome `gazinCaique`. O ambiente de teste de integração consumira uma base separada com nome `gazinCaiqueTest`.
