@@ -40,14 +40,14 @@
 #### Front-end
  - Abrir o terminal do sistema no caminho `cadastro-desenvolvedor/web`
  - Baixar o node_modules com o comando `yarn`
- - Executar o comando `yarn start` para subir a aplicação.
+ - Executar o comando `yarn start` para iniciar a aplicação.
  - Será executado no endereço http://localhost:3000
   
 #### Back-end
  - No arquivo `.env`, alterar o caminho da variável `DB_CONNECTION` para se conectar com base local `mongodb://localhost:27017/gazinCaique`.
  - Abrir o terminal do sistema no caminho `cadastro-desenvolvedor/server`
  - Baixar o node_modules com o comando `yarn`
- - Executar o comando `yarn start` para subir a aplicação.
+ - Executar o comando `yarn start` para iniciar a aplicação.
  - Será executado no endereço http://localhost:3333
  
 #### Testes Front-end
@@ -60,4 +60,4 @@
 - Executar o comando `yarn test`
  
 ### Observação
-Os ambientes de aplicação e testes foram separados. A aplicação será executada consumindo uma base de dados com nome `gazinCaique`. O ambiente de teste de integração consumira uma base separada com nome `gazinCaiqueTest`.
+Os ambientes de aplicação e testes foram separados. A aplicação será executada consumindo uma base de dados com nome `gazinCaique`. O ambiente de teste de integração consumirá uma base com nome `gazinCaiqueTest`.
